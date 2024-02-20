@@ -6,7 +6,7 @@
 Let's-Encrypt certificates have a validity of 90 days. It is possible to renew the certificate from 30 days before it expires.
 This collection of scripts ensures that, unlike checking daily with crontab, a renew request is made 25 days before the expiration.
 
-# How it works
+# Efficient renewal
 > Certbot is a free, open source software tool for automatically using Let's Encrypt certificates on manually-administered websites to enable HTTPS.
 This is according to the certbot site. I also chose this tool. This tool has a renew-command that takes care of the renewal of your certificate. Certbot allows you to renew the certificate even 30 days before it expires. 
 The renewal is the responsibility of the user, i.e. YOU. On the internet the common method for renewal is to call certbot renewal with crontab. The I admit: this is a very simple and straightforward approach, since certbot will skip the renewal if it is not yet due. With certbot it is possible to request the validity period of a certificate. This allows you to calculate the earliest moment the certificate can be renewed. As stated, this can be a maximum of 30 days before the certificate expires.
