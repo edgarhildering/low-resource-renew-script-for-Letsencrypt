@@ -1,4 +1,4 @@
-# renew script for Let's Encrypt
+# low resource renew script for Let's Encrypt
  
 ## Introduction
 Let's Encrypt is extremely popular when it comes to generating a certificate. This makes secure communication within everyone's reach.
@@ -30,12 +30,20 @@ As sudo-er take the following steps:
 2. with your favorite editor replace the line `mydomain.example.com` with your own domain 
 3. set the execution flag for the script:
 ```
-    chmod +x renew.sh
+chmod +x renew.sh
 ```
 4. add this line to crontab to repeat the job
 ```
-    0 13,19 * * * /bin/bash -c /etc/letsencrypt/renew.sh
+0 13,19 * * * /bin/bash -c /etc/letsencrypt/renew.sh
 ```
 ## Remarks
 1. With the above line in crontab the script runs twice a day, i.e. twice as much as the most  certbot renewal scripts. It is however very fast and generates hardly any load. You can adapt the crontab line to reduce the frequency to once a day or even once a week. The side effect is that the initiation of the script may take longer to happen.
-2. Enjoy, --Edgar 
+2. you can - of course as sudo-er - start the renew script manually. That will result in a scheduled job. You can always check if the job is there with `atq`.
+3. if you use m/monit to monitor your processes, you can use monit instead of cron. The monit- configuration looks like this:
+```
+check file renew-due with path /etc/letsencrypt/renewisdue
+   every 5 cycles
+   start program = "/bin/bash -c '/etc/letsencrypt/renew.sh'"
+   if does not exist then start
+```
+4. Enjoy, --Edgar 
