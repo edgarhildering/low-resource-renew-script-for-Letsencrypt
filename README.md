@@ -29,13 +29,13 @@ As sudo-er take the following steps:
 1. copy the `renew.sh` script into the directory /etc/letsencrypt
 2. with your favorite editor replace the line `mydomain.example.com` with your own domain 
 3. set the execution flag for the script:
-
+```
     chmod +x renew.sh
-
+```
 4. add this line to crontab to repeat the job
-
+```
     0 13,19 * * * /bin/bash -c /etc/letsencrypt/renew.sh
-
+```
 ## Remarks
 1. With the above line in crontab the script runs twice a day, i.e. twice as much as the most  certbot renewal scripts. It is however very fast and generates hardly any load. You can adapt the crontab line to reduce the frequency to once a day or even once a week. The side effect is that the initiation of the script may take longer to happen.
 2. Enjoy, --Edgar 
