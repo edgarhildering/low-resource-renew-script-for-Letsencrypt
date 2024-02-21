@@ -1,8 +1,7 @@
-# renew script for Letsencrypt
- renew script for Letsencrypt
+# renew script for Let's Encrypt
  
 ## Introduction
- Let's Encrypt is extremely popular when it comes to generating a certificate. This makes secure communication within everyone's reach.
+Let's Encrypt is extremely popular when it comes to generating a certificate. This makes secure communication within everyone's reach.
 Let's-Encrypt certificates have a validity of 90 days. It is possible to renew the certificate from 30 days before it expires.
 This collection of scripts ensures that, unlike checking daily with crontab, a renew request is made 25 days before the expiration.
 
