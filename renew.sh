@@ -16,7 +16,7 @@ IAM=${WD}/$(basename $0)   # path/name of the script
 SAFETY=25                  # number of days before expiration to allow renewal (10-29)
 #
 if [ -f ${FLAG} ]; then
-#  The file exists -> is it mine?
+#  The flag exists -> is it mine?
 	if ! grep -Fxq "$1" ${FLAG}; then
 	# not mine, but is there a job connected to this FLAG?
 		if grep -Fq "`cat ${FLAG}`" `ls -1 /var/spool/cron/atjobs/*`; then 
